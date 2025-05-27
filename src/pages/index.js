@@ -28,11 +28,7 @@ export default function Home() {
               View Courses
             </span>
           </Link>
-          <Link href="/contact">
-            <span className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-6 rounded-full transition duration-300 cursor-pointer">
-              Contact for Mentorship
-            </span>
-          </Link>
+          
         </div>
       </section>
     </Layout>

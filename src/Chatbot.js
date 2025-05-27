@@ -63,7 +63,7 @@ export default function Chatbot() {
             position: 'fixed',
             bottom: '80px',
             right: '20px',
-            width: '300px',
+            width: '500px',
             height: '400px',
             background: 'white',
             border: '1px solid #ccc',

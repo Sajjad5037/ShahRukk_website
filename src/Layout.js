@@ -25,8 +25,8 @@ export default function Layout({ children }) {
           </Link>
         </li>
         <li className="nav-item">
-          <Link href="/portfolio" legacyBehavior>
-            <a className="nav-link text-white">Portfolio</a>
+          <Link href="/essay_checker" legacyBehavior>
+            <a className="nav-link text-white">Essay Checker</a>
           </Link>
         </li>
         <li className="nav-item">

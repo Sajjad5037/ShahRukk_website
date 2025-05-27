@@ -26,18 +26,26 @@ export default function Layout({ children }) {
         </li>
         <li className="nav-item">
           <Link href="/essay_checker" legacyBehavior>
-            <a className="nav-link text-white">Essay Checker</a>
+            <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
+              Essay Checker
+            </a>
           </Link>
         </li>
         <li className="nav-item">
           <Link href="/about" legacyBehavior>
-            <a className="nav-link text-white">About</a>
+            <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
+              About
+            </a>
           </Link>
+
         </li>
         <li className="nav-item">
           <Link href="/contact" legacyBehavior>
-            <a className="nav-link text-white">Contact</a>
+            <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
+              Contact
+            </a>
           </Link>
+
         </li>
       </ul>
     </div>

@@ -44,7 +44,7 @@ export default function ImageToTextExtractor() {
 
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h2>Image to Text Extractor</h2>
+      <h2>Essay Checker</h2>
 
       <input type="file" accept="image/*" onChange={handleImageChange} />
       <button
@@ -52,7 +52,7 @@ export default function ImageToTextExtractor() {
         style={{ marginLeft: '10px', padding: '5px 10px' }}
         disabled={loading}
       >
-        {loading ? 'Extracting...' : 'Extract Text'}
+        {loading ? 'Extracting...' : 'Evaluate Your Essay'}
       </button>
 
       {extractedText && (

@@ -59,9 +59,7 @@ export default function ImageToTextExtractor() {
         <div style={{ marginTop: '20px' }}>
           <h3>Extracted Text:</h3>
           <textarea
-            rows="10"
-            style={{ width: '100%' }}
-            style={{ height: '200px' }}
+            style={{ width: '100%', height: '400px', fontSize: '16px', padding: '10px' }}
             value={extractedText}
             readOnly
           />

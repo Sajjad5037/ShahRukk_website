@@ -61,6 +61,7 @@ export default function ImageToTextExtractor() {
           <textarea
             rows="10"
             style={{ width: '100%' }}
+            style={{ height: '200px' }}
             value={extractedText}
             readOnly
           />

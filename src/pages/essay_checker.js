@@ -22,7 +22,7 @@ export default function ImageToTextExtractor() {
     setLoading(true);
 
     try {
-      const response = await fetch('https://your-backend-url.com/api/extract-text', {
+      const response = await fetch('https://usefulapis-production.up.railway.app/api/extract_text_essayChecker', {
         method: 'POST',
         body: formData,
       });

@@ -58,8 +58,8 @@ export default function Layout({ children }) {
        <footer className="bg-dark text-white text-center py-3 mt-auto">
         <div className="container">
           <small>
-            &copy; {new Date().getFullYear()} Sajjad Ali Noor. All rights reserved. <br />
-            Email: <a href="mailto:proactive1.san@gmail.com" className="text-white">proactive1.san@gmail.com</a> |{' '}
+            &copy; {new Date().getFullYear()} Shah Rukh. All rights reserved. <br />
+            Email: <a href="mailto:proactive1.san@gmail.com" className="text-white">abc@gmail.com</a> |{' '}
             <a href="https://www.linkedin.com/in/sajjad-ali-noor-633b9432b/" className="text-white" target="_blank" rel="noopener noreferrer">LinkedIn</a> |{' '}
             <a href="https://github.com/Sajjad5037" className="text-white" target="_blank" rel="noopener noreferrer">GitHub</a> |{' '}
             <a href="https://www.upwork.com/freelancers/~01b6b8db86416c0fea" className="text-white" target="_blank" rel="noopener noreferrer">Upwork</a>

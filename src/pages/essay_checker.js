@@ -27,7 +27,7 @@ export default function EssayChecker() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8001/extract_text_essayChecker",
+        "https://usefulapis-production.up.railway.app/extract_text_essayChecker",
         {
           method: "POST",
           body: formData,

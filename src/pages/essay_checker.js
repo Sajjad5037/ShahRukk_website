@@ -1,69 +1,99 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-export default function ImageToTextExtractor() {
-  const [image, setImage] = useState(null);
-  const [extractedText, setExtractedText] = useState('');
+export default function EssayChecker() {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [assessmentResult, setAssessmentResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
-    setExtractedText(''); // Clear previous result
+    setSelectedImage(e.target.files[0]);
+    setAssessmentResult("");
+    setMessage("");
   };
 
-  const handleUpload = async () => {
-    if (!image) {
-      alert('Please upload an image first.');
+  const handleEvaluate = async () => {
+    if (!selectedImage) {
+      alert("Please upload an image first.");
       return;
     }
 
-    const formData = new FormData();
-    formData.append('image', image);
-
     setLoading(true);
+    setAssessmentResult("");
+    setMessage("");
+
+    const formData = new FormData();
+    formData.append("image", selectedImage);
 
     try {
-      const response = await fetch('http://127.0.0.1:8001/extract_text_essayChecker', {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await fetch(
+        "http://127.0.0.1:8001/extract_text_essayChecker",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
-      if (response.ok) {
-        const data = await response.json();
-        setExtractedText(data.text); // assuming backend responds with { text: "..." }
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setAssessmentResult(data.message || "Assessment completed.");
+        setMessage(`Email sent to: ${data.email_sent_to}`);
       } else {
-        console.error('Failed to extract text:', await response.text());
-        alert('Error extracting text from image.');
+        setAssessmentResult("");
+        setMessage(
+          data.message || "Failed to extract or evaluate essay. Please try again."
+        );
       }
     } catch (error) {
-      console.error('Upload failed:', error);
-      alert('An error occurred.');
+      console.error("Error during upload:", error);
+      setMessage("An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h2>Essay Checker</h2>
+    <div style={{ maxWidth: 600, margin: "40px auto", padding: 20 }}>
+      <h2>CSS Essay Checker</h2>
 
       <input type="file" accept="image/*" onChange={handleImageChange} />
       <button
-        onClick={handleUpload}
-        style={{ marginLeft: '10px', padding: '5px 10px' }}
-        disabled={loading}
+        onClick={handleEvaluate}
+        disabled={!selectedImage || loading}
+        style={{ marginLeft: 10, padding: "6px 12px", cursor: "pointer" }}
       >
-        {loading ? 'Extracting...' : 'Evaluate Your Essay'}
+        {loading ? "Evaluating..." : "Evaluate Your Essay"}
       </button>
 
-      {extractedText && (
-        <div style={{ marginTop: '20px' }}>
-          <h3>Extracted Text:</h3>
-          <textarea
-            style={{ width: '100%', height: '400px', fontSize: '16px', padding: '10px' }}
-            value={extractedText}
-            readOnly
-          />
-        </div>
+      {message && (
+        <p
+          style={{
+            marginTop: 20,
+            padding: 10,
+            backgroundColor: "#f0f0f0",
+            borderRadius: 4,
+          }}
+        >
+          {message}
+        </p>
+      )}
+
+      {assessmentResult && (
+        <textarea
+          readOnly
+          value={assessmentResult}
+          style={{
+            width: "100%",
+            height: 350,
+            marginTop: 20,
+            fontSize: 16,
+            padding: 10,
+            borderRadius: 4,
+            border: "1px solid #ccc",
+            whiteSpace: "pre-wrap",
+          }}
+        />
       )}
     </div>
   );

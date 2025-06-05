@@ -16,22 +16,22 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const formPayload = new FormData();
       formPayload.append("name", formData.name);
       formPayload.append("email", formData.email);
       formPayload.append("message", formData.message);
-  
+
       const response = await fetch("https://usefulapis-production.up.railway.app/api/send-email-ShahRukh", {
         method: "POST",
-        body: formPayload // No need to set Content-Type manually
+        body: formPayload
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to send message.");
       }
-  
+
       alert("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
@@ -39,13 +39,13 @@ const Contact = () => {
       alert("Failed to send message. Please try again.");
     }
   };
-  
 
   return (
     <div style={styles.container}>
       <h1 style={styles.header}>Contact Us</h1>
 
       <div style={styles.content}>
+        {/* Left: Form */}
         <form onSubmit={handleSubmit} style={styles.form}>
           <h2>Send us a message</h2>
           <input
@@ -78,24 +78,13 @@ const Contact = () => {
           <button type="submit" style={styles.button}>Send</button>
         </form>
 
-        <div style={styles.details}>
-          <h2>Our Location</h2>
-          <p><strong>Rafis Kitchen</strong></p>
-          <p>Wayne street</p>
-          <p>Olean NY 14760</p>
-          <p><strong>Phone:</strong> (716) 790-8100</p>
-          <p><strong>Email:</strong> contact@rafis-kitchen.com</p>
-
-          <iframe
-            title="Google Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2961.0339431013895!2d-78.44169012492586!3d42.08532227121981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d27057b9802739%3A0x79fa6fb46906073c!2s800%20Wayne%20St%2C%20Olean%2C%20NY%2014760%2C%20USA!5e0!3m2!1sen!2s!4v1746427260888!5m2!1sen!2s"
-            width="100%"
-            height="250"
-            frameBorder="0"
-            style={{ border: 0, borderRadius: "10px", marginTop: "10px" }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
+        {/* Right: Image */}
+        <div style={styles.imageContainer}>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwrNtpC1MSJ3ULc9FQbY2qXFPIcR64Hdv9jQ&s"
+            alt="Contact illustration"
+            style={styles.image}
+          />
         </div>
       </div>
     </div>
@@ -152,9 +141,18 @@ const styles = {
     fontWeight: "bold",
     fontSize: "1rem"
   },
-  details: {
+  imageContainer: {
     flex: 1,
-    minWidth: "300px"
+    minWidth: "300px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  image: {
+    width: "100%",
+    maxWidth: "400px",
+    borderRadius: "10px",
+    objectFit: "cover"
   }
 };
 

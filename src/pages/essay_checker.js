@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 export default function EssayChecker() {
   const [selectedImages, setSelectedImages] = useState([]); // store multiple images
+  const [userMessage, setUserMessage] = useState(""); // message to tutor
   const [assessmentResult, setAssessmentResult] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -23,10 +24,10 @@ export default function EssayChecker() {
     setMessage("");
 
     const formData = new FormData();
-    selectedImages.forEach((image, index) => {
+    selectedImages.forEach((image) => {
       formData.append("images", image); // 'images' is the key for all files
-      // Alternatively, use: formData.append(`images[${index}]`, image);
     });
+    formData.append("user_message", userMessage); // append tutor message
 
     try {
       const response = await fetch(
@@ -66,10 +67,40 @@ export default function EssayChecker() {
         multiple
         onChange={handleImageChange}
       />
+
+      <div style={{ marginTop: 20 }}>
+        <label htmlFor="tutorMessage" style={{ display: "block", marginBottom: 8 }}>
+          Message to Tutor:
+        </label>
+        <textarea
+          id="tutorMessage"
+          value={userMessage}
+          onChange={(e) => setUserMessage(e.target.value)}
+          placeholder="Write any notes or questions for the tutor here..."
+          style={{
+            width: "100%",
+            height: 100,
+            padding: 10,
+            borderRadius: 4,
+            border: "1px solid #ccc",
+            resize: "vertical",
+            fontSize: 14,
+          }}
+        />
+      </div>
+
       <button
         onClick={handleEvaluate}
         disabled={selectedImages.length === 0 || loading}
-        style={{ marginLeft: 10, padding: "6px 12px", cursor: "pointer" }}
+        style={{
+          marginTop: 20,
+          padding: "6px 12px",
+          cursor: "pointer",
+          backgroundColor: "#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: 4,
+        }}
       >
         {loading ? "Evaluating..." : "Evaluate Your Essay"}
       </button>

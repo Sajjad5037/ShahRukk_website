@@ -1,129 +1,115 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-function Chatbot() {
-  const [messages, setMessages] = useState([
-    { sender: 'bot', text: 'Hello! How can I help you today?' },
-  ]);
+export default function Chatbot() {
   const [input, setInput] = useState('');
+  const [messages, setMessages] = useState([]);
 
-  const handleSend = async () => {
-  if (!input.trim()) return;
+  const sendMessage = async () => {
+    if (!input.trim()) return;
 
-  const userMessage = { sender: 'user', text: input };
-  setMessages((prevMessages) => [...prevMessages, userMessage]);
-  setInput('');
+    const userMessage = { sender: 'user', text: input };
+    setMessages((prev) => [...prev, userMessage]);
+    setInput('');
 
-  try {
-    const response = await fetch('https://usefulapis-production.up.railway.app/api/chatwebsite_ShahRukh', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message: input }),
-    });
+    try {
+      const response = await fetch('https://usefulapis-production.up.railway.app/api/chatwebsite_ShahRukh', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: input }),
+      });
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const data = await response.json();
-    const botMessage = {
-      sender: 'bot',
-      text: data.reply || 'Sorry, no response received.',
-    };
-
-    setMessages((prevMessages) => [...prevMessages, botMessage]);
-  } catch (error) {
-    console.error('Error fetching chatbot response:', error);
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { sender: 'bot', text: 'Oops! Something went wrong. Please try again.' },
-    ]);
-  }
-};
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleSend();
+      if (response.ok) {
+        const data = await response.json();
+        setMessages((prev) => [...prev, { sender: 'bot', text: data.reply }]);
+      } else {
+        console.error('Failed to send message:', response.status, await response.text());
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
     }
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.chatBox}>
-        {messages.map((msg, index) => (
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        background: 'white',
+        zIndex: 1000,
+        display: 'flex',
+        flexDirection: 'column',
+        border: '1px solid #ccc',
+      }}
+    >
+      <div style={{ padding: '10px', fontWeight: 'bold', background: '#343a40', color: 'white' }}>
+        Chatbot
+      </div>
+
+      <div
+        style={{
+          flex: 1,
+          overflowY: 'auto',
+          background: '#f8f9fa',
+          padding: '10px',
+        }}
+      >
+        {messages.map((msg, idx) => (
           <div
-            key={index}
+            key={idx}
             style={{
-              ...styles.message,
-              alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
-              backgroundColor: msg.sender === 'user' ? '#dcf8c6' : '#e6e6e6',
+              textAlign: msg.sender === 'user' ? 'right' : 'left',
+              marginBottom: '10px',
             }}
           >
-            {msg.text}
+            <div
+              style={{
+                display: 'inline-block',
+                background: msg.sender === 'user' ? '#007bff' : '#ccc',
+                color: msg.sender === 'user' ? 'white' : 'black',
+                borderRadius: '10px',
+                padding: '8px 12px',
+                maxWidth: '80%',
+              }}
+            >
+              {msg.text}
+            </div>
           </div>
         ))}
       </div>
-      <div style={styles.inputArea}>
+
+      <div style={{ padding: '10px', borderTop: '1px solid #ccc' }}>
         <input
           type="text"
+          placeholder="Type a message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          style={styles.input}
-          placeholder="Type a message..."
+          onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+          style={{
+            width: '100%',
+            padding: '10px',
+            borderRadius: '5px',
+            border: '1px solid #ccc',
+          }}
         />
-        <button onClick={handleSend} style={styles.button}>Send</button>
+        <button
+          onClick={sendMessage}
+          style={{
+            marginTop: '10px',
+            width: '100%',
+            padding: '10px',
+            borderRadius: '5px',
+            backgroundColor: '#007bff',
+            color: 'white',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          Send
+        </button>
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    maxWidth: '500px',
-    height: '500px',
-    margin: '20px auto',
-    border: '1px solid #ccc',
-    borderRadius: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    fontFamily: 'Arial, sans-serif',
-  },
-  chatBox: {
-    flex: 1,
-    padding: '10px',
-    overflowY: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#f9f9f9',
-  },
-  message: {
-    padding: '10px',
-    borderRadius: '10px',
-    margin: '5px 0',
-    maxWidth: '80%',
-  },
-  inputArea: {
-    display: 'flex',
-    padding: '10px',
-    borderTop: '1px solid #ccc',
-  },
-  input: {
-    flex: 1,
-    padding: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    marginRight: '10px',
-  },
-  button: {
-    padding: '10px 20px',
-    borderRadius: '5px',
-    backgroundColor: '#007bff',
-    color: 'white',
-    border: 'none',
-    cursor: 'pointer',
-  },
-};
-
-export default Chatbot;

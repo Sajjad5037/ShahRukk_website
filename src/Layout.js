@@ -16,7 +16,7 @@ export default function Layout({ children }) {
         <div style={{
           display: 'inline-block',
           paddingLeft: '100%',
-          animation: 'scroll-text 15s linear infinite',
+          animation: 'scroll-text 30s linear infinite',
         }}>
           🚨 Welcome to Shah Rukh's AI Services – Fast, Smart & Reliable! 🚨
         </div>

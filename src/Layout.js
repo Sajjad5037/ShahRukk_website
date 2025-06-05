@@ -1,6 +1,6 @@
 import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Chatbot from './Chatbot'; // Adjust path as needed
+
 
 export default function Layout({ children }) {
   return (

@@ -86,7 +86,7 @@ export default function Layout({ children }) {
       <div style={{
         position: 'fixed',
         top: '50%',
-        right: 0,
+        left: 0,
         transform: 'translateY(-50%)',
         backgroundColor: '#f8f9fa',
         border: '1px solid #dee2e6',

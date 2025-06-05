@@ -61,12 +61,41 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link href="/about" legacyBehavior>
+                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
+                    Reading Material
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/about" legacyBehavior>
+                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
+                    Attempted Questions
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/about" legacyBehavior>
+                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
+                    Time Table Maker
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/about" legacyBehavior>
+                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
+                    Video Lecture
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link href="/Chatbot" legacyBehavior>
                   <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
                     Ask me anything
                   </a>
                 </Link>
               </li>
+              
               <li className="nav-item">
                 <Link href="/contact" legacyBehavior>
                   <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">

@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 
 export default function EssayChecker() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImages, setSelectedImages] = useState([]); // store multiple images
   const [assessmentResult, setAssessmentResult] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleImageChange = (e) => {
-    setSelectedImage(e.target.files[0]);
+    setSelectedImages(Array.from(e.target.files)); // convert FileList to array
     setAssessmentResult("");
     setMessage("");
   };
 
   const handleEvaluate = async () => {
-    if (!selectedImage) {
-      alert("Please upload an image first.");
+    if (selectedImages.length === 0) {
+      alert("Please upload at least one image.");
       return;
     }
 
@@ -23,7 +23,10 @@ export default function EssayChecker() {
     setMessage("");
 
     const formData = new FormData();
-    formData.append("image", selectedImage);
+    selectedImages.forEach((image, index) => {
+      formData.append("images", image); // 'images' is the key for all files
+      // Alternatively, use: formData.append(`images[${index}]`, image);
+    });
 
     try {
       const response = await fetch(
@@ -57,10 +60,15 @@ export default function EssayChecker() {
     <div style={{ maxWidth: 600, margin: "40px auto", padding: 20 }}>
       <h2>CSS Essay Checker</h2>
 
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={handleImageChange}
+      />
       <button
         onClick={handleEvaluate}
-        disabled={!selectedImage || loading}
+        disabled={selectedImages.length === 0 || loading}
         style={{ marginLeft: 10, padding: "6px 12px", cursor: "pointer" }}
       >
         {loading ? "Evaluating..." : "Evaluate Your Essay"}

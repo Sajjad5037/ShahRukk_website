@@ -6,23 +6,41 @@ function Chatbot() {
   ]);
   const [input, setInput] = useState('');
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+  if (!input.trim()) return;
 
-    const userMessage = { sender: 'user', text: input };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
+  const userMessage = { sender: 'user', text: input };
+  setMessages((prevMessages) => [...prevMessages, userMessage]);
+  setInput('');
 
-    // Simulated bot response
-    setTimeout(() => {
-      const botMessage = {
-        sender: 'bot',
-        text: `You said: "${input}"`,
-      };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-    }, 500);
+  try {
+    const response = await fetch('https://usefulapis-production.up.railway.app/api/chatwebsite_ShahRukh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: input }),
+    });
 
-    setInput('');
-  };
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    const botMessage = {
+      sender: 'bot',
+      text: data.reply || 'Sorry, no response received.',
+    };
+
+    setMessages((prevMessages) => [...prevMessages, botMessage]);
+  } catch (error) {
+    console.error('Error fetching chatbot response:', error);
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { sender: 'bot', text: 'Oops! Something went wrong. Please try again.' },
+    ]);
+  }
+};
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {

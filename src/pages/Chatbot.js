@@ -1,140 +1,111 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-export default function Chatbot() {
-  const [isOpen, setIsOpen] = useState(false);
+function Chatbot() {
+  const [messages, setMessages] = useState([
+    { sender: 'bot', text: 'Hello! How can I help you today?' },
+  ]);
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([]); // Store messages here
 
-  const sendMessage = async () => {
-    if (!input.trim()) return; // Ignore if message is empty
+  const handleSend = () => {
+    if (!input.trim()) return;
 
-    // Add user message to the chat
-    setMessages([...messages, { sender: 'user', text: input }]);
-    setInput(''); // Clear the input field
+    const userMessage = { sender: 'user', text: input };
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
 
-    try {
-      const response = await fetch('https://usefulapis-production.up.railway.app/api/chatwebsite_ShahRukh', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: input }),
-      });
+    // Simulated bot response
+    setTimeout(() => {
+      const botMessage = {
+        sender: 'bot',
+        text: `You said: "${input}"`,
+      };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    }, 500);
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Response from backend:', data);
+    setInput('');
+  };
 
-        // Add chatbot response to the chat
-        setMessages([...messages, { sender: 'user', text: input }, { sender: 'chatbot', text: data.reply }]);
-      } else {
-        console.error('Failed to send message:', response.status, await response.text());
-      }
-    } catch (error) {
-      console.error('Error sending message:', error);
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSend();
     }
   };
 
   return (
-    <>
-      <div
-        className="chatbot-toggle"
-        onClick={() => setIsOpen(!isOpen)}
-        style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          zIndex: 1000,
-          background: '#007bff',
-          color: 'white',
-          padding: '10px 15px',
-          borderRadius: '50%',
-          cursor: 'pointer',
-          boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-        }}
-      >
-        💬
-      </div>
-
-      {isOpen && (
-        <div
-          className="chatbot-window"
-          style={{
-            position: 'fixed',
-            bottom: '80px',
-            right: '20px',
-            width: '800px',
-            height: '400px',
-            background: 'white',
-            border: '1px solid #ccc',
-            borderRadius: '10px',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-            padding: '10px',
-            zIndex: 999,
-          }}
-        >
-          <div style={{ fontWeight: 'bold', marginBottom: '10px' }}>Chatbot</div>
+    <div style={styles.container}>
+      <div style={styles.chatBox}>
+        {messages.map((msg, index) => (
           <div
+            key={index}
             style={{
-              height: '80%',
-              overflowY: 'auto',
-              background: '#f8f9fa',
-              padding: '5px',
+              ...styles.message,
+              alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
+              backgroundColor: msg.sender === 'user' ? '#dcf8c6' : '#e6e6e6',
             }}
           >
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                style={{
-                  textAlign: msg.sender === 'user' ? 'right' : 'left',
-                  marginBottom: '10px',
-                }}
-              >
-                <div
-                  style={{
-                    display: 'inline-block',
-                    background: msg.sender === 'user' ? '#007bff' : '#ccc',
-                    color: msg.sender === 'user' ? 'white' : 'black',
-                    borderRadius: '10px',
-                    padding: '8px 12px',
-                  }}
-                >
-                  {msg.text}
-                </div>
-              </div>
-            ))}
+            {msg.text}
           </div>
-          <input
-            type="text"
-            placeholder="Type a message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && sendMessage()} // Send on Enter key press
-            style={{
-              width: '100%',
-              padding: '8px',
-              marginTop: '10px',
-              borderRadius: '5px',
-              border: '1px solid #ccc',
-            }}
-          />
-          <button
-            onClick={sendMessage}
-            style={{
-              width: '100%',
-              padding: '8px',
-              marginTop: '10px',
-              borderRadius: '5px',
-              backgroundColor: '#007bff',
-              color: 'white',
-              border: 'none',
-              cursor: 'pointer',
-            }}
-          >
-            Send
-          </button>
-        </div>
-      )}
-    </>
+        ))}
+      </div>
+      <div style={styles.inputArea}>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+          style={styles.input}
+          placeholder="Type a message..."
+        />
+        <button onClick={handleSend} style={styles.button}>Send</button>
+      </div>
+    </div>
   );
 }
+
+const styles = {
+  container: {
+    maxWidth: '500px',
+    height: '500px',
+    margin: '20px auto',
+    border: '1px solid #ccc',
+    borderRadius: '10px',
+    display: 'flex',
+    flexDirection: 'column',
+    fontFamily: 'Arial, sans-serif',
+  },
+  chatBox: {
+    flex: 1,
+    padding: '10px',
+    overflowY: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#f9f9f9',
+  },
+  message: {
+    padding: '10px',
+    borderRadius: '10px',
+    margin: '5px 0',
+    maxWidth: '80%',
+  },
+  inputArea: {
+    display: 'flex',
+    padding: '10px',
+    borderTop: '1px solid #ccc',
+  },
+  input: {
+    flex: 1,
+    padding: '10px',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+    marginRight: '10px',
+  },
+  button: {
+    padding: '10px 20px',
+    borderRadius: '5px',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    cursor: 'pointer',
+  },
+};
+
+export default Chatbot;

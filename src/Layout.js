@@ -1,6 +1,6 @@
 import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Chatbot from './Chatbot'; // Adjust path as needed
 
 export default function Layout({ children }) {
   return (
@@ -61,9 +61,9 @@ export default function Layout({ children }) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/about" legacyBehavior>
+                <Link href="/Chatbot" legacyBehavior>
                   <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
-                    About
+                    Ask me anything
                   </a>
                 </Link>
               </li>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 export default function Layout({ children }) {
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -33,7 +32,8 @@ export default function Layout({ children }) {
         }
       `}</style>
 
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      {/* ✅ Updated Navbar */}
+      <nav className="navbar navbar-expand-lg bg-white border-bottom">
         <div className="w-100">
           <button
             className="navbar-toggler"
@@ -46,63 +46,31 @@ export default function Layout({ children }) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link href="/" legacyBehavior>
-                  <a className="nav-link text-white">Home</a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/essay_checker" legacyBehavior>
-                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
-                    Essay Checker
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/about" legacyBehavior>
-                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
-                    Reading Material
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/about" legacyBehavior>
-                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
-                    Attempted Questions
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/about" legacyBehavior>
-                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
-                    Time Table Maker
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/about" legacyBehavior>
-                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
-                    Video Lecture
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/Chatbot" legacyBehavior>
-                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
-                    Ask me anything
-                  </a>
-                </Link>
-              </li>
-              
-              <li className="nav-item">
-                <Link href="/contact" legacyBehavior>
-                  <a className="nav-link text-white" target="_blank" rel="noopener noreferrer">
-                    Contact
-                  </a>
-                </Link>
-              </li>
+              {[
+                { label: "Home", href: "/" },
+                { label: "Essay Checker", href: "/essay_checker" },
+                { label: "Reading Material", href: "/about" },
+                { label: "Attempted Questions", href: "/about" },
+                { label: "Time Table Maker", href: "/about" },
+                { label: "Video Lecture", href: "/about" },
+                { label: "Ask me anything", href: "/Chatbot" },
+                { label: "Contact", href: "/contact" },
+              ].map((item, index) => (
+                <li className="nav-item" key={index}>
+                  <Link href={item.href} legacyBehavior>
+                    <a
+                      className="nav-link text-black fw-bold"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.label}
+                    </a>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -132,8 +100,6 @@ export default function Layout({ children }) {
           </small>
         </div>
       </footer>
-
-      
     </div>
   );
 }

@@ -34,10 +34,10 @@ export default function Home() {
           href="/Chatbot"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ backgroundColor: '#059669' }}  // Tailwind emerald-600 hex code
-          className="text-white font-semibold py-3 px-8 rounded-lg shadow-md transition duration-300 hover:bg-green-700"
+          style={{ backgroundColor: '#4B5563' }}  // Tailwind emerald-600 hex code
+          className="bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg"
         >
-          Ask Me Anything
+          Ask Me Anything about CSS
         </a>
       </section>
     </Layout>

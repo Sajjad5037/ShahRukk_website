@@ -51,7 +51,6 @@ export default function Layout({ children }) {
                 { label: "Attempted Questions", href: "/about" },
                 { label: "Time Table Maker", href: "/about" },
                 { label: "Video Lecture", href: "/about" },
-                { label: "Ask me anything", href: "/Chatbot" },
                 { label: "Contact", href: "/contact" },
               ].map((item, index) => (
                 <li className="nav-item" key={index}>

@@ -30,15 +30,16 @@ export default function Home() {
           Preparing for the Central Superior Services (CSS) exam? Learn with one of Pakistan's most respected mentors. Mr. Shah Rukh offers deep insights, proven strategies, and unwavering support to help you secure a place in the civil services.
         </p>
 
-        <a
-          href="/Chatbot"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ backgroundColor: '#4B5563' }}  // Tailwind emerald-600 hex code
-          className="bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg"
-        >
-          Ask Me Anything about CSS
-        </a>
+        <div className="flex justify-center mt-6">
+          <a
+            href="/Chatbot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 text-center inline-block"
+          >
+            Ask Me Anything about CSS
+          </a>
+        </div>
       </section>
     </Layout>
   );

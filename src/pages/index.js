@@ -29,14 +29,7 @@ export default function Home() {
             </a>
           </Link>
         </div>
-        <div className="flex justify-center space-x-4">
-          <Link href="/courses">
-            <span className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full transition duration-300 cursor-pointer">
-              View Courses
-            </span>
-          </Link>
-          
-        </div>
+        
       </section>
     </Layout>
   );

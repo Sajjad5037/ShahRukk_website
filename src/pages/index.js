@@ -1,5 +1,4 @@
 import Layout from '../Layout';
-import Link from 'next/link';
 import Head from 'next/head';
 
 export default function Home() {
@@ -21,21 +20,69 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="text-center py-20 px-6 bg-gradient-to-b from-white to-gray-100">
-        <h1 className="text-4xl font-bold mb-4 text-gray-800">
+      <section
+        style={{
+          textAlign: 'center',
+          padding: '5rem 1.5rem',
+          background: 'linear-gradient(to bottom, white, #f3f4f6)', // from-white to-gray-100
+          minHeight: '100vh',
+          boxSizing: 'border-box',
+        }}
+      >
+        <h1
+          style={{
+            fontSize: '2.25rem', // ~ text-4xl
+            fontWeight: '700',
+            marginBottom: '1rem',
+            color: '#1f2937', // gray-800
+            maxWidth: '42rem', // ~ max-w-2xl
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          }}
+        >
           Your Trusted Guide to CSS Success – Mr. Shah Rukh
         </h1>
 
-        <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+        <p
+          style={{
+            fontSize: '1.125rem', // ~ text-lg
+            color: '#4b5563', // gray-600
+            marginBottom: '1.5rem',
+            maxWidth: '42rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            lineHeight: 1.6,
+          }}
+        >
           Preparing for the Central Superior Services (CSS) exam? Learn with one of Pakistan's most respected mentors. Mr. Shah Rukh offers deep insights, proven strategies, and unwavering support to help you secure a place in the civil services.
         </p>
 
-        <div className="flex justify-center mt-6">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '1.5rem',
+          }}
+        >
           <a
             href="/Chatbot"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 text-center inline-block cursor-pointer"
+            style={{
+              backgroundColor: '#2563eb', // blue-600
+              color: 'white',
+              fontWeight: '600',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '0.5rem',
+              textAlign: 'center',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              userSelect: 'none',
+              display: 'inline-block',
+              transition: 'background-color 0.2s ease-in-out',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1d4ed8')} // blue-700 hover
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2563eb')}
           >
             Ask Me Anything about CSS
           </a>

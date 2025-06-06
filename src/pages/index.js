@@ -35,7 +35,7 @@ export default function Home() {
             href="/Chatbot"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 text-center inline-block"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 text-center inline-block cursor-pointer"
           >
             Ask Me Anything about CSS
           </a>

@@ -46,7 +46,7 @@ export default function Layout({ children }) {
             <ul className="navbar-nav">
               {[
                 { label: "Home", href: "/" },
-                { label: "Essay Checker", href: "/essay_checker" },
+                { label: "Essay Checker", href: "https://class-management-system-new.web.app/" }
                 { label: "Reading Material", href: "/about" },
                 { label: "Attempted Questions", href: "/about" },
                 { label: "Time Table Maker", href: "/about" },

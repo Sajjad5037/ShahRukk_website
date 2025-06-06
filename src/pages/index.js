@@ -23,7 +23,7 @@ export default function Home() {
           Preparing for the Central Superior Services (CSS) exam? Learn with one of Pakistan's most respected mentors. Mr. Shah Rukh offers deep insights, proven strategies, and unwavering support to help you secure a place in the civil services.
         </p>
         <div className="flex justify-center">
-          <Link href="/Chatbot">
+          <Link href="/Chatbot" passHref>
             <a className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-300">
               Ask Me Anything
             </a>

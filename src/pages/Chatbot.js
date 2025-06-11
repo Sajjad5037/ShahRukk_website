@@ -72,6 +72,7 @@ export default function Chatbot() {
                 borderRadius: '10px',
                 padding: '8px 12px',
                 maxWidth: '80%',
+                whiteSpace: 'pre-wrap', // 🔥 This ensures line breaks are shown
               }}
             >
               {msg.text}

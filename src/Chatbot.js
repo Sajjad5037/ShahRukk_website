@@ -13,7 +13,7 @@ export default function Chatbot() {
     setInput(''); // Clear the input field
 
     try {
-      const response = await fetch('https://usefulapis-production.up.railway.app/api/chatwebsite_ShahRukh', {
+      const response = await fetch('http://127.0.0.1:8001/api/chatwebsite_ShahRukh', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

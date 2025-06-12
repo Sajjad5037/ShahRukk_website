@@ -16,7 +16,7 @@ export default function Layout({ children }) {
           paddingLeft: '100%',
           animation: 'scroll-text 30s linear infinite',
         }}>
-          🚨 Welcome to Shah Rukh's AI Services – Fast, Smart & Reliable! 🚨
+          🚨1. Limited offer for free detailed essay evaluation, login now!                       Take advantage by asking anything about CSS and PMS from us!   Exclusive reading material and content only available to select candidates.  🚨
         </div>
       </div>
 

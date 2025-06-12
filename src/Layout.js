@@ -98,7 +98,7 @@ export default function Layout({ children }) {
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
             <img src="https://cdn-icons-png.flaticon.com/32/733/733547.png" alt="Facebook" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/mshahrukhhaider?igsh=c2d2YmVoOTFodWpn" target="_blank" rel="noopener noreferrer">
             <img src="https://cdn-icons-png.flaticon.com/32/733/733558.png" alt="Instagram" />
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">

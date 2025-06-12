@@ -117,9 +117,9 @@ export default function Layout({ children }) {
           <small>
             &copy; {new Date().getFullYear()} Shah Rukh. All rights reserved. <br />
             Email: <a href="mailto:proactive1.san@gmail.com" className="text-white">mshahrukhhaider@gmail.com@gmail.com</a> |{' '}
-            <a href="https://www.linkedin.com/in/sajjad-ali-noor-633b9432b/" className="text-white" target="_blank" rel="noopener noreferrer">LinkedIn</a> |{' '}
-            <a href="https://github.com/Sajjad5037" className="text-white" target="_blank" rel="noopener noreferrer">GitHub</a> |{' '}
-            <a href="https://www.upwork.com/freelancers/~01b6b8db86416c0fea" className="text-white" target="_blank" rel="noopener noreferrer">Upwork</a>
+            <a href="https://www.instagram.com/mshahrukhhaider?igsh=c2d2YmVoOTFodWpn" className="text-white" target="_blank" rel="noopener noreferrer">twitter</a> |{' '}
+            <a href="https://www.instagram.com/mshahrukhhaider?igsh=c2d2YmVoOTFodWpn" className="text-white" target="_blank" rel="noopener noreferrer">instagram</a> |{' '}
+            <a href="https://www.instagram.com/mshahrukhhaider?igsh=c2d2YmVoOTFodWpn" className="text-white" target="_blank" rel="noopener noreferrer">facebook</a>
           </small>
         </div>
       </footer>

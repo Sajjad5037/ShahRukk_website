@@ -72,7 +72,7 @@ export default function Layout({ children }) {
 
       <div className="container my-3 text-center">
         <img
-          src="https://chatgpt.com/s/m_684afd60fff081919628d8fd3e7d5956"
+          src="https://chatgpt.com/backend-api/public_content/enc/eyJpZCI6Im1fNjg0YWZkNjBmZmYwODE5MTk2MjhkOGZkM2U3ZDU5NTY6ZmlsZV8wMDAwMDAwMGU1OTg2MWY5YmY0MzUzNmQ2OWUwYzg1NSIsInRzIjoiNDg2MDQxIiwicCI6InB5aSIsInNpZyI6IjZmNWNmMGM0MDk0NDVmMzVlMTdhN2FlZTQ2NmI4Njc0NzdkOTYzZDExYmMyYmVlYjQxMmNmNDE5N2JlMDg4MTciLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsfQ=="
           alt="Decorative Banner"
           style={{
             maxWidth: '100%',

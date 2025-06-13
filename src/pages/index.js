@@ -57,45 +57,21 @@ export default function Home() {
           Preparing for the Central Superior Services (CSS) exam? Learn with one of Pakistan's most respected mentors. Mr. Shah Rukh offers deep insights, proven strategies, and unwavering support to help you secure a place in the civil services.
         </p>
 
-        {/* Vertical Image Gallery */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-            marginBottom: '2rem',
-          }}
-        >
-          {[
-            'https://i.ibb.co/r2LJykQ1/1.png',
-            'https://i.ibb.co/qLR49BTn/2.jpg',
-            'https://i.ibb.co/bjvRwcL2/3.jpg',
-            'https://i.ibb.co/bjvRwcL2/3.jpg',
-            'https://i.ibb.co/TB95JVNw/5.jpg',
-          ].map((src, index) => (
-            <img
-              key={index}
-              src={src}
-              alt={`CSS Image ${index + 1}`}
-              style={{
-                width: '90%',
-                maxWidth: '600px',
-                height: 'auto',
-                borderRadius: '0.5rem',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-              }}
-            />
-          ))}
+        {/* Image gallery */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+          <img src="https://i.ibb.co/r2LJykQ1/1.png" alt="Slide 1" style={{ width: '90%', maxWidth: '600px' }} />
+          <img src="https://i.ibb.co/qLR49BTn/2.jpg" alt="Slide 2" style={{ width: '90%', maxWidth: '600px' }} />
+          <img src="https://i.ibb.co/bjvRwcL2/3.jpg" alt="Slide 3" style={{ width: '90%', maxWidth: '600px' }} />
+          <img src="https://i.ibb.co/bjvRwcL2/3.jpg" alt="Slide 4" style={{ width: '90%', maxWidth: '600px' }} />
+          <img src="https://i.ibb.co/TB95JVNw/5.jpg" alt="Slide 5" style={{ width: '90%', maxWidth: '600px' }} />
         </div>
 
-        {/* Ask Me Anything Button */}
+        {/* CTA Button */}
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
-            marginTop: '1.5rem',
+            marginTop: '2rem',
           }}
         >
           <a
@@ -115,12 +91,8 @@ export default function Home() {
               display: 'inline-block',
               transition: 'background-color 0.2s ease-in-out',
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = '#1d4ed8')
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = '#2563eb')
-            }
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1d4ed8')}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2563eb')}
           >
             Ask Me Anything about CSS
           </a>

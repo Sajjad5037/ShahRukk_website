@@ -69,16 +69,16 @@ export default function Home() {
           }}
         >
           {[
-            'https://i.ibb.co/r2LJykQ/1.png',
-            'https://i.ibb.co/qLR49BT/2.jpg',
-            'https://i.ibb.co/bjvRwcL/3.jpg',
-            'https://i.ibb.co/bjvRwcL/3.jpg', // repeated on purpose
-            'https://i.ibb.co/TB95JVN/5.jpg',
+            'https://i.ibb.co/r2LJykQ1/1.png',
+            'https://i.ibb.co/qLR49BTn/2.jpg',
+            'https://i.ibb.co/bjvRwcL2/3.jpg',
+            'https://i.ibb.co/bjvRwcL2/3.jpg',
+            'https://i.ibb.co/TB95JVNw/5.jpg',
           ].map((src, index) => (
             <img
               key={index}
               src={src}
-              alt={`CSS Session ${index + 1}`}
+              alt={`CSS Image ${index + 1}`}
               style={{
                 width: '90%',
                 maxWidth: '600px',
